@@ -1,11 +1,14 @@
 # Análise Exploratória de Países
 
 Entre maio e julho de 2021 eu estudei muitas técnicas não supervisionadas de ciência de dados meu MBA na USP.
+
 Para praticar, eu selecionei uma base de dados no Kaggle e realizei três análises não supervisionadas para o estudo sociodemográfico de 227 países: PCA, análise de clusters e análise de correspondência simples.
+
 A base de dados contém dados de 1970 até 2017 e pode ser encontrada através deste link: 
+
 https://www.kaggle.com/fernandol/countries-of-the-world
 
-Na tabela abaixo, observa-se os primeiros dados da base de dados.
+Na tabela abaixo, observa-se os primeiros dados da base de dados:
 
 ![](Imagens/1.png)
 
@@ -14,10 +17,15 @@ A partir das observações, foi possível determinar a matriz de correlações d
 ![](Imagens/2.png)
 
 Estabeleceu-se o segundo teste de hipótese:
+
 __Hipótese nula__: As variáveis não se correlacionam.
+
 __Hipótese alternativa__: As variáveis estão correlacionadas.
+
 Para verificar qual hipótese será considerada, pode-se usar o teste de esfericidade de Bartlett. Considera-se a hipótese alternativa com 95% de confiança se valor P do teste for menor que 0.05, ou se o valor de Qui² for maior que 164 para o número correspondente de graus de liberdade.
+
 Para a dada matriz de Pearson para essa base de dados, o valor P do teste é muito próximo de 0 e Qui² vale 2580, adotando-se, portanto, a hipótese de que as variáveis estão correlacionadas.
+
 
 Para o estudo da variabilidade conjunta dos dados, foi utilizada a técnica PCA para a extração dos componentes principais. Foram utilizados apenas 6 fatores, extraídos da matriz de correlação das 17 variáveis métricas presentes na base de dados, onde os 6 fatores principais foram extraídos com base no critério de Bartlett (fatores relacionados a autovalores maiores que 1) e representam 78% da variabilidade conjunta dos dados.
 
@@ -34,7 +42,9 @@ Para a análise de agrupamento dos países, foi feito um gráfico para a visuali
 ![](Imagens/4.png)
 
 Na imagem abaixo visualiza-se os agrupamentos com 3, 4, 5 e 6 grupos no gráfico Dim1 x Dim2. As duas dimensões juntas representam 44,8% da variabilidade conjunta dos dados. O eixo horizontal representa um indicador que leva em consideração índices sociodemográficos. Quanto mais à direita, menores são os índices de analfabetismo, mortalidade infantil e natalidade e maiores são os índices de serviço, PIB per capita e acesso a telefone celular.
+
 Quanto mais acima no gráfico, maiores são a porcentagem de terra arável e índice de cultivo.
+
 Há outros 4 fatores, que correspondem a uma menor porcentagem na variabilidade total dos dados e não estão representados nos gráficos.
 
 ![](Imagens/5.png)
@@ -44,10 +54,9 @@ Para a análise, escolheu-se trabalhar com 5 grupos. Foram extraídas as médias
 ![](Imagens/6.png)
 
 Continuação
-
 ![](Imagens/7.png)
 
-Caracterização dos grupos de países 
+Caracterização dos grupos de países:
 
 |     Cluster    |     Descrição                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     Representantes (nomes em inglês)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
@@ -61,6 +70,7 @@ Caracterização dos grupos de países
 
 # Análise de Correspondência Simples
 A partir dos países agrupados em 5 clusters, surge a hipótese se existe uma associação entre esses grupos e os continentes. Para se dizer que a associação entre a região e os clusters não ocorre de forma  aleatória, verifica-se se o valor P do teste Qui² é menor do que 0.05.
+
 O valor P pode ser visualizado junto com a tabela de contingência abaixo.
 
 
@@ -80,7 +90,7 @@ A proximidade entre o cluster 2 e a África Subsaariana no mapa sugere uma forte
 
 Através da tabela de resíduos, é possível observar que não podemos nos basear somente no mapa perceptual bidimensional. Entre todas as associações citadas anteriormente, podemos verificar que as que realmente podemos afirmar com mais de 95% de nível de confiança são as associações apresentadas na seguinte tabela:
 
-|Cluster|Associação(valor p < 0.05)                         |
+|Cluster|Associação (valor p < 0.05)                        |
 |-------|---------------------------------------------------|
 |   1   |	Europa Oriental, América Latina e Caribe e Báltico|
 |   2   |	África Subsaariana                                |
@@ -89,4 +99,5 @@ Através da tabela de resíduos, é possível observar que não podemos nos base
 |   5   |	Europa Ocidental                                  |
 
 Através da utilização conjunta das técnicas de PCA, Clustering e Análise de Correspondência, foi possível estudar o comportamento conjunto das variáveis e indicadores dos países, agrupar países semelhantes entre si e realizar uma associação dos grupos de países com as regiões.
+
 No estudo, o que me chamou a atenção foi o contraste entre o Cluster 5 e 2, associados à Europa Ocidental e África Subsaariana, respectivamente. O Cluster 5 possui os melhores indicadores de mortalidade infantil, PIB per capita, analfabetismo, acesso a telefones celulares, além de ser o cluster com a menor média de taxa de natalidade. O Cluster 2, associado à África Subsaariana, é o oposto em todas estas variáveis, tendo os piores índices e a maior média de taxa de natalidade.
