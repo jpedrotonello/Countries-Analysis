@@ -1,104 +1,104 @@
-# Análise Exploratória de Países
+# Exploratory Country Analysis
 
-Entre maio e julho de 2021 eu estudei muitas técnicas não supervisionadas de ciência de dados meu MBA na USP.
+Between May and July 2021 I studied many unsupervised data science techniques my MBA at USP.
 
-Para praticar, eu selecionei uma base de dados no Kaggle e realizei três análises não supervisionadas para o estudo sociodemográfico de 227 países: PCA, análise de clusters e análise de correspondência simples.
+In order to practice, I selected a Kaggle database and performed three unsupervised analyzes for the sociodemographic study of 227 countries: PCA, cluster analysis, and simple correspondence analysis.
 
-A base de dados contém dados de 1970 até 2017 e pode ser encontrada através deste link: 
+The database contains data from 1970 to 2017 and can be found through this url-link: 
 
 https://www.kaggle.com/fernandol/countries-of-the-world
 
-Na tabela abaixo, observa-se os primeiros dados da base de dados:
+The table below shows the first data from the database:
 
 ![](Imagens/1.png)
 
-A partir das observações, foi possível determinar a matriz de correlações de Pearson entre as variáveis. Foi feito um mapa de calor para uma visualização mais fácil do comportamento conjunto dos dados.
+From the observations, it was possible to determine the Pearson correlation matrix between the variables. A heat map was made for an easier visualization of the combined behavior of the data.
 
 ![](Imagens/2.png)
 
-Estabeleceu-se o segundo teste de hipótese:
+The following hypothesis test was established:
 
-__Hipótese nula__: As variáveis não se correlacionam.
+__Null hypothesis__: Variables are not correlated.
 
-__Hipótese alternativa__: As variáveis estão correlacionadas.
+__Alternativa hypothesis__: Variables are correlated.
 
-Para verificar qual hipótese será considerada, pode-se usar o teste de esfericidade de Bartlett. Considera-se a hipótese alternativa com 95% de confiança se valor P do teste for menor que 0.05, ou se o valor de Qui² for maior que 164 para o número correspondente de graus de liberdade.
+In order to check which hypothesis will be considered, the Bartlett test can be used. The alternative hypothesis is considered with 95% confidence if the test's P-value is less than 0.05, or if the Chi² value is greater than 164 for the corresponding number of degrees of freedom.
 
-Para a dada matriz de Pearson para essa base de dados, o valor P do teste é muito próximo de 0 e Qui² vale 2580, adotando-se, portanto, a hipótese de que as variáveis estão correlacionadas.
+For the Pearson matrix for this database, the P value of the test is very close to 0 and Chi² is 2580, thus adopting the hypothesis that the variables are correlated.
 
 
-Para o estudo da variabilidade conjunta dos dados, foi utilizada a técnica PCA para a extração dos componentes principais. Foram utilizados apenas 6 fatores, extraídos da matriz de correlação das 17 variáveis métricas presentes na base de dados, onde os 6 fatores principais foram extraídos com base no critério de Bartlett (fatores relacionados a autovalores maiores que 1) e representam 78% da variabilidade conjunta dos dados.
+For the study of the covariance of the data, the PCA technique was used to extract the principal components. Only 6 factors were used, extracted from the correlation matrix of the 17 metric variables present in the database, where the 6 main factors were extracted based on Bartlett's criterion (factors related to eigenvalues ​​greater than 1) and represent 78% of the covariance of the data.
 
-Da matriz de correlação das variáveis métricas, foram obtidos os autovalores, que são representados no gráfico abaixo:
+From the correlation matrix of the metric variables, the eigenvalues ​​were obtained, which are represented in the graph below:
 
 ![](Imagens/3.png)
 
-Observa-se que o fator principal (PC1), que, sozinho, representa 30% da variabilidade dos dados, é muito influenciado por indicadores sociodemográficos, correlacionando-se positivamente com indicadores de serviço, número de celulares por 1000 habitantes, alfabetização e PIB per capita, enquanto que correlaciona-se muito negativamente com indicadores de agricultura, taxa de nascimento e mortalidade infantil.
-O segundo fator representa 14% da variabilidade dos dados e está correlacionado fortemente com a porcentagem de terra arável e índice de cultivo.
+It is observed that the principal factor (PC1), which alone represents 30% of the variability of the data, is highly influenced by sociodemographic indicators, correlating positively with service indicators, number of cell phones per 1000 inhabitants, literacy and GDP per capita, while it is very negatively correlated with indicators of agriculture, birth rate and infant mortality.
+The second factor represents 14% of the data variability and is strongly correlated with the percentage of arable land and cropping rate.
 
-# Análise de Cluster
-Para a análise de agrupamento dos países, foi feito um gráfico para a visualização de elbow, para obter-se uma pista sobre a melhor quantidade de grupos.
+# Cluster Analysis
+For the clustering of countries, an elbow graph was made in order to obtain a clue about the best number of clusters.
 
 ![](Imagens/4.png)
 
-Na imagem abaixo visualiza-se os agrupamentos com 3, 4, 5 e 6 grupos no gráfico Dim1 x Dim2. As duas dimensões juntas representam 44,8% da variabilidade conjunta dos dados. O eixo horizontal representa um indicador que leva em consideração índices sociodemográficos. Quanto mais à direita, menores são os índices de analfabetismo, mortalidade infantil e natalidade e maiores são os índices de serviço, PIB per capita e acesso a telefone celular.
+The image below shows the cluster analysis with 3, 4, 5 and 6 groups in the Dim1 x Dim2 graph. The two dimensions together represent 44.8% of the combined variability of the data. The horizontal axis represents an indicator that takes into account sociodemographic indexes. The further to the right, the lower the illiteracy, infant mortality and birth rates and the higher the service, GDP per capita and cell phone access rates.
 
-Quanto mais acima no gráfico, maiores são a porcentagem de terra arável e índice de cultivo.
+The higher up the graph, the higher the percentage of arable land and cropping rate.
 
-Há outros 4 fatores, que correspondem a uma menor porcentagem na variabilidade total dos dados e não estão representados nos gráficos.
+There are 4 other factors, which correspond to a smaller percentage of the total variability of the data and are not represented in the graphs.
 
 ![](Imagens/5.png)
 
-Para a análise, escolheu-se trabalhar com 5 grupos. Foram extraídas as médias de cada grupo referentes a cada variável métrica para facilitar a caracterização de cada um dos 5 grupos.
+For the analysis, I chose to work with 5 clusters. The means of each group referring to each metric variable were extracted to facilitate the characterization of each of the 5 clusters.
 
 ![](Imagens/6.png)
 
-Continuação
+Continuation
 ![](Imagens/7.png)
 
-Caracterização dos grupos de países:
+Characterization of clusters:
 
-|     Cluster    |     Descrição                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     Representantes (nomes em inglês)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
+|     Cluster    |     Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     Countries                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
-|     1          |     O cluster 1 é o maior de todos, com 76   representantes, Representa os países que, em média, possuem uma menor área,   menor população e menor índice de migração. Este cluster possui a segunda   melhor taxa de mortalidade infantil, alfabetização e acesso a telefones   celulares. Estando atrás apenas do cluster 5 para estes indicadores. Em média   possui índices elevados de terra arável, atrás apenas do cluster 4 para este   indicador. São países industrializados, estando atrás apenas do cluster 3   nesse quesito.    |     Mexico, Mongolia, Montserrat, Morocco,   Nauru, Nicaragua, Panama, Paraguay, Peru, Philippines, Poland, Reunion,   Romania, Saint Helena, Saint Kitts & Nevis, Saint Lucia, St Pierre &   Miquelon, Saint Vincent and the Grenadines, Samoa, Serbia, Seychelles,   Slovakia, Solomon Islands, South Africa, Sri Lanka, Suriname, Syria, Thailand,   Trinidad & Tobago, Tunisia, Turkey, Tuvalu, Ukraine, Uruguay, Uzbekistan,   Vietnam and West Bank.                                                                                                                                                                                                                                               |   |   |
-|     2          |     Países com índices piores de   mortalidade infantil, PIB per capita, analfabetismo, acesso a telefones   celulares, além de ser o cluster com a maior média taxa de natalidade. Estes   países possuem os maiores índices de agricultura em média.                                                                                                                                                                                                                                                                                        |     Guinea-Bissau, Kenya, Laos, Lesotho,   Liberia, Madagascar, Malawi, Mali, Mauritania, Mayotte, Mozambique, Namibia,   Nepal, Niger, Nigeria, Pakistan, Papua New Guinea, Senegal, Sierra Leone,   Somalia, Sudan, Swaziland, Tajikistan, Tanzania, Uganda, Vanuatu, Yemen,   Zambia and Zimbabwe.                                                                                                                                                                                                                                                                                                                                                                                                    |   |   |
-|     3          |     Em média, os países do cluster 3   possuem uma maior população, maior área, menor densidade populacional e menor   extensão litorânea. Em geral são países com menos terra arável em porcentagem   e menos cultivo, mas destacam-se pela industrialização e baixo índice de   mortalidade.                                                                                                                                                                                                                                                |     Algeria, Argentina, Bolivia, Brazil,   Brunei, Chile, China, Colombia, Congo, Repub. of the, Egypt, Equatorial   Guinea, Gabon, Indonesia, Iran, Iraq, Kazakhstan, Kuwait, Libya, Malaysia,   Oman, Puerto Rico, Qatar, Russia, Saudi Arabia, Turkmenistan, United Arab   Emirates, Venezuela and Western Sahara                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
-|     4          |     Representa uma menor quantidade de   países. Os países do cluster 4 possuem altos índices de terra arável e   cultivo. São países com alta extensão litorânea e com baixa industrialização.                                                                                                                                                                                                                                                                                                                                               |     Bangladesh, Burundi, Comoros, Gaza   Strip, Haiti, India, Kiribati, Maldives, Marshall Islands, Micronesia, Fed. St.,   Moldova, Rwanda, Sao Tome & Principe, Togo, Tonga and Wallis and Futuna.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
-|     5          |     Países com os melhores índices de   mortalidade infantil, PIB per capita, analfabetismo, acesso a telefones   celulares, além de ser o cluster com a menor média de taxa de natalidade                                                                                                                                                                                                                                                                                                                                                    |     Andorra, Anguilla, Aruba, Australia,   Austria, Bahamas, Bahrain, Barbados, Belgium, Bermuda, British Virgin Is.,   Canada, Cayman Islands, Cyprus, Denmark, Faroe Islands, Finland, France,   French Guiana, French Polynesia, Germany, Gibraltar, Greece, Guam, Guernsey,   Hong Kong, Iceland, Ireland, Isle of Man, Israel, Italy, Japan, Jersey,   Korea, South, Liechtenstein, Luxembourg, Macau, Malta, Martinique, Monaco,   Netherlands, Netherlands Antilles, New Caledonia, New Zealand, N. Mariana   Islands, Norway, Palau, Portugal, San Marino, Singapore, Slovenia, Spain,   Sweden, Switzerland, Taiwan, Turks & Caicos Is, United Kingdom, United   States, and Virgin Islands.    |   |   |
+|     1          |     Cluster 1 is the largest of all, with 76 members. It represents countries that, on average, have a smaller area, smaller population and lower rate of migration. This cluster has the second best rate of infant mortality, literacy and access to cell phones. Being behind only cluster 5 for these indicators. On average, it has high levels of arable land, second only to cluster 4 for this indicator. They are industrialized countries, only behind cluster 3 in this regard.    |     Mexico, Mongolia, Montserrat, Morocco,   Nauru, Nicaragua, Panama, Paraguay, Peru, Philippines, Poland, Reunion,   Romania, Saint Helena, Saint Kitts & Nevis, Saint Lucia, St Pierre &   Miquelon, Saint Vincent and the Grenadines, Samoa, Serbia, Seychelles,   Slovakia, Solomon Islands, South Africa, Sri Lanka, Suriname, Syria, Thailand,   Trinidad & Tobago, Tunisia, Turkey, Tuvalu, Ukraine, Uruguay, Uzbekistan,   Vietnam and West Bank.                                                                                                                                                                                                                                               |   |   |
+|     2          |     Countries with the worst rates of infant mortality, GDP per capita, illiteracy, access to cell phones, in addition to being the cluster with the highest average birth rate. These countries have the highest levels of agriculture on average.                                                                                                                                                                                                                                                                                        |     Guinea-Bissau, Kenya, Laos, Lesotho,   Liberia, Madagascar, Malawi, Mali, Mauritania, Mayotte, Mozambique, Namibia,   Nepal, Niger, Nigeria, Pakistan, Papua New Guinea, Senegal, Sierra Leone,   Somalia, Sudan, Swaziland, Tajikistan, Tanzania, Uganda, Vanuatu, Yemen,   Zambia and Zimbabwe.                                                                                                                                                                                                                                                                                                                                                                                                    |   |   |
+|     3          |     On average, the countries in cluster 3 have a larger population, larger area, less population density and lesser coastline. In general, they are countries with less arable land in percentage and less cultivation, but they stand out for their industrialization and low mortality rate.                                                                                                                                                                                                                                                |     Algeria, Argentina, Bolivia, Brazil,   Brunei, Chile, China, Colombia, Congo, Repub. of the, Egypt, Equatorial   Guinea, Gabon, Indonesia, Iran, Iraq, Kazakhstan, Kuwait, Libya, Malaysia,   Oman, Puerto Rico, Qatar, Russia, Saudi Arabia, Turkmenistan, United Arab   Emirates, Venezuela and Western Sahara                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
+|     4          |     Represents a smaller number of countries. Cluster 4 countries have high levels of arable land and cultivation. They are countries with a high coastal extension and low industrialization.                                                                                                                                                                                                                                                                                                                                               |     Bangladesh, Burundi, Comoros, Gaza   Strip, Haiti, India, Kiribati, Maldives, Marshall Islands, Micronesia, Fed. St.,   Moldova, Rwanda, Sao Tome & Principe, Togo, Tonga and Wallis and Futuna.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |   |   |
+|     5          |     Countries with the best infant mortality rates, GDP per capita, illiteracy, access to cell phones, in addition to being the cluster with the lowest average birth rate.                                                                                                                                                                                                                                                                                                                                                    |     Andorra, Anguilla, Aruba, Australia,   Austria, Bahamas, Bahrain, Barbados, Belgium, Bermuda, British Virgin Is.,   Canada, Cayman Islands, Cyprus, Denmark, Faroe Islands, Finland, France,   French Guiana, French Polynesia, Germany, Gibraltar, Greece, Guam, Guernsey,   Hong Kong, Iceland, Ireland, Isle of Man, Israel, Italy, Japan, Jersey,   Korea, South, Liechtenstein, Luxembourg, Macau, Malta, Martinique, Monaco,   Netherlands, Netherlands Antilles, New Caledonia, New Zealand, N. Mariana   Islands, Norway, Palau, Portugal, San Marino, Singapore, Slovenia, Spain,   Sweden, Switzerland, Taiwan, Turks & Caicos Is, United Kingdom, United   States and Virgin Islands.    |   |   |
 
 
 
-# Análise de Correspondência Simples
-A partir dos países agrupados em 5 clusters, surge a hipótese se existe uma associação entre esses grupos e os continentes. Para se dizer que a associação entre a região e os clusters não ocorre de forma  aleatória, verifica-se se o valor P do teste Qui² é menor do que 0.05.
+# Simple Correspondence Analysis
+From the countries grouped into 5 clusters, the hypothesis arises whether there is an association between these groups and the continents. To say that the association between the region and the clusters does not occur randomly, it is verified whether the P value of the Qui² test is less than 0.05.
 
-O valor P pode ser visualizado junto com a tabela de contingência abaixo.
+The P value can be viewed together with the contingency table below.
 
 
 ![](Imagens/8.png)
 
-De fato, o valor P é menor que 0.05, adotando-se, portanto, a hipótese de associação entre as variáveis categóricas Região e Cluster.
+The P value is less than 0.05, thus adopting the hypothesis of association between the categorical variables Region and Cluster.
 
-Utilizando o método de correspondência simples entre as duas variáveis, foi feito um mapa perceptual, capaz de representar 83% da associação entre as regiões e os clusters.
+Using the simple correspondence method between the two variables, a perceptual mapping was made, capable of representing 83% of the association between regions and clusters.
 
 ![](Imagens/9.png)
 
-A proximidade entre o cluster 2 e a África Subsaariana no mapa sugere uma forte associação entre a região e o cluster. O mapa também sugere que os países do cluster 4 estão mais associados com a África Subsaariana, Ásia e Oceania do que com as outras regiões, o cluster 5 está associado ao oeste europeu e América do Norte e os clusters 1 e 3 estão associados ao norte da África, Báltico, América Latina e Caribe, Comunidade de Estados Independentes, Leste Europeu, Próximo-Oriente.
+The proximity between cluster 2 and sub-Saharan Africa on the map suggests a strong association between the region and the cluster. The map also suggests that countries in cluster 4 are more associated with sub-Saharan Africa, Asia and Oceania than with the other regions, cluster 5 is associated with western Europe and North America and clusters 1 and 3 are associated with the north Africa, Baltic, Latin America and Caribbean, Commonwealth of Independent States, Eastern Europe and Near East.
 
-É importante reforçar que isso é uma sugestão de um mapa perceptual e que ele não representa 100% da inércia total. Podemos validar ou descartar hipóteses de associação através da tabela de resíduos padronizados, onde as linhas representam as regiões e as colunas representam os grupos de países. Um valor maior que 1.96 significa que podemos afirmar com mais de 95% de nível de confiança que a respectiva região está associada ao respectivo cluster.
+It is important to stress that this is a suggestion of a perceptual map and that it does not represent 100% of the total inertia. We can validate or discard association hypotheses through the standardized residuals table, where the rows represent the regions and the columns represent the clusters. A value greater than 1.96 means that we can say with more than 95% of confidence level that the respective region is associated with the respective cluster.
 
 ![](Imagens/10.png)
 
-Através da tabela de resíduos, é possível observar que não podemos nos basear somente no mapa perceptual bidimensional. Entre todas as associações citadas anteriormente, podemos verificar que as que realmente podemos afirmar com mais de 95% de nível de confiança são as associações apresentadas na seguinte tabela:
+Through the residuals table, it is possible to observe that we cannot base ourselves only on the two-dimensional perceptual mapping. Among all the associations mentioned above, we can verify that the ones that we can actually say with more than 95% of confidence level are the associations shown in the following table:
 
-|Cluster|Associação (valor p < 0.05)                        |
-|-------|---------------------------------------------------|
-|   1   |	Europa Oriental, América Latina e Caribe e Báltico|
-|   2   |	África Subsaariana                                |
-|   3   |	Norte da África e Próximo-Oriente                 |
-|   4   |	Oceania                                           |
-|   5   |	Europa Ocidental                                  |
+|Cluster|Association (valor p < 0.05)                               |
+|-------|-----------------------------------------------------------|
+|   1   |	Eastern Europe, Latin America and the Caribbean and Baltic|
+|   2   |	África Subsaariana                                        |
+|   3   |	North Africa and Near East                                |
+|   4   |	Oceania                                                   |
+|   5   |	Western Europe                                            |
 
-Através da utilização conjunta das técnicas de PCA, Clustering e Análise de Correspondência, foi possível estudar o comportamento conjunto das variáveis e indicadores dos países, agrupar países semelhantes entre si e realizar uma associação dos grupos de países com as regiões.
+Through the joint use of the techniques of PCA, Clustering and Correspondence Analysis, it was possible to study the joint behavior of the variables and indicators of the countries, group similar countries together and carry out an association of the groups of countries with the regions.
 
-No estudo, o que me chamou a atenção foi o contraste entre o Cluster 5 e 2, associados à Europa Ocidental e África Subsaariana, respectivamente. O Cluster 5 possui os melhores indicadores de mortalidade infantil, PIB per capita, analfabetismo, acesso a telefones celulares, além de ser o cluster com a menor média de taxa de natalidade. O Cluster 2, associado à África Subsaariana, é o oposto em todas estas variáveis, tendo os piores índices e a maior média de taxa de natalidade.
+In the study, what caught my attention was the contrast between Cluster 5 and 2, associated with Western Europe and Sub-Saharan Africa, respectively. Cluster 5 has the best indicators of infant mortality, GDP per capita, illiteracy, access to cell phones, in addition to being the cluster with the lowest average birth rate. Cluster 2, associated with Sub-Saharan Africa, is the opposite in all these variables, having the worst rates and the highest average birth rate.
 
